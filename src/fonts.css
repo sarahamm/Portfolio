@@ -1,0 +1,40 @@
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./assets/fonts/CormorantGaramond-allweb.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-athar";
+  src: url("./assets/fonts/Roboto-athar.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VarelaRound-Regular-methaq";
+  src: url("./assets/fonts/VarelaRound-Regular-methaq.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Kalam-wasabi";
+  src: url("./assets/fonts/Kalam-wasabi.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ArchivoBlack-jip";
+  src: url("./assets/fonts/ArchivoBlack-jip.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("./assets/fonts/Lora.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}

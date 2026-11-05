@@ -1,0 +1,361 @@
+#next-steps {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+   & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+    .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction:row;
+  gap: 8px;
+  margin: 32px 0 0;
+
+ 
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+    
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 24px;
+      width:24px;
+      color :rgb(99, 130, 99);
+    }
+  }
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.contact-section {
+position: relative; /* Enables z-index functionality */
+  z-index: 10;
+  padding: 16px;
+  align-items: center;
+  min-height: 65vh;
+  margin: 20px ;
+  max-width: 100vw;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-content: center;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 10; /* Ensures form and links render on top of waves */
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-section h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: "Cormorant Garamond";
+  font-size: 32px;
+}
+.email-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 35vw;
+}
+.email-input ::placeholder{
+  font-family: "Cormorant Garamond";
+  font-size: 16px;
+}
+
+.email-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-family: "Cormorant Garamond";
+  font-size: 24px;
+}
+.email-input h5 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 22px;
+  color: var(--text-h);
+  font-family: "Cormorant Garamond";
+}
+
+.email-input input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: whitesmoke;
+  font: 600 16px "Cormorant Garamond";
+  color: rgb(83, 82, 82);
+}
+
+.message-label {
+width: 35vw;
+align-items: start;
+align-content:start;
+}
+
+.text-area-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.text-area-div h5{
+  font-family: "Cormorant Garamond";
+  font-size: 24px;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  color: var(--text-h);
+}
+
+.text-area-div textarea{
+  font-family: "";
+  font-size :16px;
+
+}
+
+.contact-section textarea {
+  width: 35vw;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: whitesmoke;
+  font: lightgray;
+  font-size: 12px;
+  font-family: "Cormorant Garamond";
+}
+
+.contact-section button {
+  padding: 10px 20px;
+  background-color: darkseagreen;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 35vw;
+}
+.contact-section button:hover {
+  background-color: rgb(99, 130, 99);
+}
+.submit-btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 12px;
+    margin: 16px auto;
+  }
+
+  .email-input,
+  .contact-section textarea,
+  .contact-section button {
+    width: 100%;
+  }
+}
+
+
+
+/* Additional Styling waves */
+@property --color{
+  syntax: "<color>";
+  inherits: true;
+  initial-value: darkseagreen;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	--color: darkseagreen5;
+	background: #f9f9f9;
+	animation: color-change 20s ease-in-out infinite;
+}
+
+.test {
+	position: absolute;
+  top: 0;
+  left: 0;
+	width: 100%;
+	height: 100%;
+  z-index: 1;
+	background: hsl(from var(--color) h s calc(l - 5));
+	clip-path: shape(
+		from 0% 100%,
+		line to 0% 40%,
+		arc by 50% 10% of 50% cw,
+		arc by 50% 10% of 50%,
+		line to 100% 100%,
+		close
+  	);
+	animation: wave 10s ease-in-out infinite;
+	
+&::before, &::after {
+    content: '';
+    position: absolute;
+    top: 0;  
+    left: 0;  
+    width: 100%;
+    height: 100%;
+  }
+	
+	&::before {
+		z-index: -2;
+		background: var(--color);
+		clip-path: shape(
+			from 0% 100%,
+			line to 0% 50%,
+			arc by 50% 10% of 80% cw,
+			arc by 50% 10% of 80%,
+			line to 100% 100%,
+			close
+		);
+		animation: wave-2 10s ease-in-out infinite;
+	}
+	
+	&::after {
+		z-index: -1;
+		background: hsl(from var(--color) h s calc(l + 5));
+		clip-path: shape(
+			from 0% 100%,
+			line to 0% 60%,
+			arc by 70% 15% of 100% cw,
+			arc by 30% 15% of 100%,
+			line to 100% 100%,
+			close
+		);
+		animation: wave-3 10s ease-in-out infinite;
+	}
+}
+
+@keyframes color-change {
+	33% {
+		--color: #124C74;
+	}
+	
+	66% {
+		--color: #52591F;
+	}
+}
+
+@keyframes wave {
+	50% {
+		clip-path: shape(
+			from 0% 100%,
+			line to 0% 42%,
+			arc by 50% 10% of 45% cw,
+			arc by 50% 10% of 45%,
+			line to 100% 100%,
+			close
+		);
+	}
+}
+
+@keyframes wave-2 {
+	50% {
+		clip-path: shape(
+			from 0% 100%,
+			line to 0% 48%,
+			arc by 50% 10% of 70% cw,
+			arc by 50% 10% of 70%,
+			line to 100% 100%,
+			close
+		);
+	}
+}
+
+@keyframes wave-3 {
+	50% {
+		clip-path: shape(
+			from 0% 100%,
+			line to 0% 61%,
+			arc by 50% 15% of 92% cw,
+			arc by 50% 15% of 92%,
+			line to 100% 100%,
+			close
+		);
+	}
+}

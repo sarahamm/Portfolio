@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+
+/* BASE SETTINGS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fafafa; /* Sleek dark mode background */
+  color: #ffffff;
+  font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* MAIN WRAPPER */
+.projects-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  gap: 80px;
+}
+
+/* REFINED GLASSMORPHISM CARD */
+.project-card {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 30px;
+  border-radius: 24px;
+  
+  /* Cleaner glass effect with subtle project color glow */
+  background: linear-gradient(145deg, color-mix(in srgb, var(--project-color) 90%, transparent), rgba(164, 163, 163, 0.8) 100%,rgba(248, 244, 232, 0.8) 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid color-mix(in srgb, var(--project-color) 40%, transparent);
+}
+
+/* FLEX LAYOUT (Column on Mobile) */
+.project-upper-level {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+/* RIGHT: TEXT & DETAILS (Strict Vertical Flow) */
+.project-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px; /* Forces neat spacing between logo, title, description, and skills */
+  width: 100%;
+  min-width: 0;
+}
+
+.project_image-div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Logo Badge */
+.project_image {
+  height: auto;
+  width:200px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.project-text-title p {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-text-description p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #efefef;
+  max-width: 90%;
+  
+}
+
+/* SKILLS SECTION - MODERN PILLS */
+.project-skill {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.project-text-skill {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color:#efefef;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.project-skill-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+}
+
+.project-skill-list ul div {
+  display: contents; 
+}
+
+/* Sleek skill icons that expand into pills on hover */
+.project-skill-list li {
+  position: relative;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.project-skill-list li:hover {
+  background: color-mix(in srgb, var(--project-color) 20%, rgba(255,255,255,0.1));
+  border-color: color-mix(in srgb, var(--project-color) 50%, transparent);
+  transform: translateY(-2px);
+  padding: 0 20px;
+}
+
+.project-skill-list li .icon {
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.project-skill-list li .title {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  max-width: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-skill-list li:hover .title {
+  opacity: 1;
+  max-width: 100px; /* Reveals text smoothly */
+}
+
+
+/* LEFT: IMAGE CAROUSEL */
+.project-upper-level-left {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+project-txt {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.image-crousel-view {
+  width: 100%;
+  border-radius: 16px;
+  padding: 8px;
+}
+
+.image-crousel-track {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-bottom: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.image-crousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+.image-crousel-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+.image-crousel-track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+.image-crousel-track::-webkit-scrollbar-thumb:hover {
+  background: var(--project-color);
+}
+
+/* .image-crousel {
+  flex: 0 0 auto;
+  height: 280px;
+  scroll-snap-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+} */
+
+.image-crousel-once {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* DESKTOP RESPONSIVENESS (Side-by-Side Layout) */
+@media (min-width: 1025px) {
+  .project-card {
+    padding: 60px;
+  }
+  
+  .project-upper-level {
+    flex-direction: row; /* Forces left and right to sit side-by-side */
+    align-items: center;
+    gap: 60px;
+  }
+  
+  .project-text {
+    flex: 1; /* Takes up left side securely */
+    order: 1; /* Puts text on the left */
+  }
+
+  .project-upper-level-left {
+    flex: 1.2; /* Carousel takes slightly more room on the right */
+    order: 2; /* Puts carousel on the right */
+  }
+  
+  /* .image-crousel {
+    height: 600px;
+  } */
+  
+  .project-text-title p {
+    font-size: 2 rem;
+  }
+}

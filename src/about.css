@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap");
+
+:root {
+  --resume-text: #161616;
+  --resume-rule: #e5e5e5;
+  --resume-link: #6b7aa6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --resume-bg: #161616;
+    --resume-text: #f2f2f2;
+    --resume-rule: #2e2e2e;
+    --resume-link: #9aa8d4;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--resume-bg);
+}
+
+.resume {
+  box-sizing: border-box;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 72px 80px;
+  background: var(--resume-bg);
+  color: var(--resume-text);
+  text-align: left;
+  font-size: 18px;
+  line-height: 23px;
+  font-family: "Lora", serif;
+}
+
+/* About section */
+.about {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  align-items: start;
+  padding-top: 60px;
+}
+
+.about__title {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 28px;
+}
+
+.about__text p {
+  margin: 0 0 16px;
+  max-width: 670px;
+}
+
+.about__text p a {
+  color:#5f72ab;
+  text-decoration: none;
+}
+
+
+.about__link:hover,
+.about__link:focus-visible {
+  text-decoration: underline;
+}
+
+.about__photo {
+  display: block;
+  width: 80%;
+  height: auto;
+  aspect-ratio: 673 / 676;
+  object-fit: cover;
+  margin-bottom: 32px;
+}
+
+.resume__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 48px;
+  margin-top: 0;
+  padding-top: 62px;
+  border-top: 1px solid var(--resume-rule);
+}
+
+.resume__col {
+  min-width: 0;
+  padding-right: 24px;
+  margin-bottom: 32px;
+}
+
+
+
+.resume__heading {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.resume__group {
+  margin-bottom: 25px;
+}
+
+.resume__group:last-child {
+  margin-bottom: 0;
+}
+
+.resume__line {
+  margin: 0;
+  font-weight: 200;
+  font-size: 16px;
+}
+
+/* Tablet: two columns */
+@media (max-width: 960px) {
+  .resume {
+    padding: 0 40px 64px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 40px;
+    margin-bottom: 48px;
+  }
+
+  .resume__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 40px;
+    padding-top: 48px;
+  }
+}
+
+/* Mobile: one column */
+@media (max-width: 560px) {
+  .resume {
+    padding: 0 24px 48px;
+  }
+
+  .about {
+    padding-top: 28px;
+    margin-bottom: 40px;
+  }
+
+  .resume__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 32px;
+  }
+}
