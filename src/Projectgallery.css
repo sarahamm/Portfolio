@@ -129,6 +129,7 @@
   letter-spacing: -0.01em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   padding-left: 12px;
 }
 
@@ -139,6 +140,7 @@
   color: var(--pg-muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   padding-left: 12px;
 }
 

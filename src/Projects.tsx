@@ -64,18 +64,13 @@ export default function Projects() {
                   <p className="project-text-skill">Skills</p>
                   <div className="project-skill-list">
                     <ul>
-                      {project.skills.map((skill) => (
+                      {project.skills.map(() => (
                         <div>
                           <li
-                            style={
-                              {
-                                "--i": skill.i,
-                                "--j": skill.j,
-                              } as React.CSSProperties
-                            }
+                            
+                           
                           >
-                            <span className="icon">{skill.icon}</span>
-                            <span className="title">{skill.name}</span>
+                            
                           </li>
                         </div>
                       ))}

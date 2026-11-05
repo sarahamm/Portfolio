@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Projectgallery.css";
 import { ProjectData } from "./projectData.tsx";
 
-export function ProjectCard({ project ,index}: { project: (typeof ProjectData)[number]; index: number }) {
+export function ProjectCard({ project }: { project: (typeof ProjectData)[number]; index: number }) {
    const to = `/project/${project.id}`;
 
   return (
