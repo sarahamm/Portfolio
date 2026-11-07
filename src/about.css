@@ -14,10 +14,15 @@
     --resume-link: #9aa8d4;
   }
 }
-
 body {
   margin: 0;
-  background: var(--resume-bg);
+  background: var(--bg);
+  color: var(--text-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
 }
 
 .resume {
@@ -25,8 +30,8 @@ body {
   max-width: 1480px;
   margin: 0 auto;
   padding: 0 72px 80px;
-  background: var(--resume-bg);
-  color: var(--resume-text);
+  background: var(--bg);
+  color: var(--text-body);
   text-align: left;
   font-size: 18px;
   line-height: 23px;
@@ -47,6 +52,7 @@ body {
   font-size: 20px;
   font-weight: 200;
   line-height: 28px;
+  color: var(--text-strong);
 }
 
 .about__text p {
@@ -55,7 +61,7 @@ body {
 }
 
 .about__text p a {
-  color:#5f72ab;
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -72,6 +78,7 @@ body {
   aspect-ratio: 673 / 676;
   object-fit: cover;
   margin-bottom: 32px;
+  color: var(--text-strong);
 }
 
 .resume__grid {
@@ -80,7 +87,7 @@ body {
   gap: 0 48px;
   margin-top: 0;
   padding-top: 62px;
-  border-top: 1px solid var(--resume-rule);
+  border-top: 1px solid color-mix(in srgb, var(--text-body) 15%, transparent);
 }
 
 .resume__col {
@@ -96,6 +103,7 @@ body {
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
+  color: var(--text-strong);
 }
 
 .resume__group {

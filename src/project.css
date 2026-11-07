@@ -7,12 +7,12 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #fafafa; /* Sleek dark mode background */
-  color: #ffffff;
+/* body {
+    background-color: var(--bg);
+  color: var(--bg);
   font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
-}
+} */
 
 /* MAIN WRAPPER */
 .projects-wrapper {

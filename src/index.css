@@ -33,7 +33,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
-    --text-h: #f3f4f6;
+    --text-h: #1f2028;
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
@@ -59,6 +59,7 @@
   flex-direction: column;
   box-sizing: border-box;
   font-family:"sans-serif sf-pro-display", sans-serif;
+  background: var(--bg);
 }
 
 body {

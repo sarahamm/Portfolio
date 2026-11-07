@@ -34,18 +34,7 @@ export function ProjectCard({ project }: { project: (typeof ProjectData)[number]
       </div>
     </li>
   );
-
- 
-    // <li className="project-card-gallery">
-    //   {project.src ? (
-    //     <a className="project-card__link" href={project.src} target="_blank" rel="noopener noreferrer">
-    //       {content}
-    //     </a>
-    //   ) : (
-    //     content
-    //   )}
-    // </li>
-  
+   
 }
 
 export default function Gallery() {

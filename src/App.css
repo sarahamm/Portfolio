@@ -1,3 +1,618 @@
+:root {
+  color-scheme: light dark;
+
+  /* Fonts */
+  --font-serif: "Lora", serif;
+
+  /* Surfaces */
+  --bg: #fafafa;
+  --surface-button: #e6e0d6;
+
+  /* Text */
+  --text-strong: #000;
+  --text-body: #333;
+  --text-muted: #606060;
+  --text-on-accent: #fff;
+
+  /* Accents */
+  --accent: darkseagreen;
+  --accent-soft: #c6d5da;
+  --link: #9aa8d4;
+
+  /* Effects */
+  --glow-hover: 7px 5px 56px -14px #c6d5da;
+  --glow-active: 7px 5px 56px -10px darkseagreen;
+
+  /* Background logo */
+  --logo-hero-opacity: 0.1;
+  --logo-hero-blend: multiply;   /* multiply vanishes on dark backgrounds */
+  --logo-hero-filter: none;
+}
+
+/* Dark: follows the OS unless the page is forced to light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121413;
+    --surface-button: #e6e0d6;
+
+    --text-strong: #f2f2ef;
+    --text-body: #d6d8d5;
+    --text-muted: #c0c1c1;
+    --text-on-accent: #121413;
+
+    --accent: #e6e0d6;
+    --accent-soft: #3d4a4f;
+    --link: #9aa8d4;
+
+    --glow-hover: 7px 5px 56px -14px rgba(198, 213, 218, 0.3);
+    --glow-active: 7px 5px 56px -10px rgba(143, 188, 143, 0.5);
+
+    --logo-hero-opacity: 0.12;
+    --logo-hero-blend: normal;
+    --logo-hero-filter: invert(1);   /* remove if your logo is already light */
+  }
+}
+
+/* Dark: forced via data-theme */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #121413;
+  --surface-button: #e6e0d6;
+
+  --text-strong: #f2f2ef;
+  --text-body: #d6d8d5;
+  --text-muted: #c0c1c1;
+  --text-on-accent: #121413;
+
+  --accent: #e6e0d6;
+  --accent-soft: #3d4a4f;
+  --link: #9aa8d4;
+
+  --glow-hover: 7px 5px 56px -14px rgba(198, 213, 218, 0.3);
+  --glow-active: 7px 5px 56px -10px rgba(143, 188, 143, 0.5);
+
+  --logo-hero-opacity: 0.12;
+  --logo-hero-blend: normal;
+  --logo-hero-filter: invert(1);
+}
+
+/* Light: forced via data-theme (only matters when the OS is dark) */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+
+body {
+  background-color: var(--bg);
+  color: var(--text-body);
+}
+
+
+/* ==========================================================================
+   3. HERO CONTAINER & BACKGROUND LOGO
+   ========================================================================== */
+
+.main-hero {
+  width: 100vw;
+  height: 100vh;
+  padding: 50px;
+}
+
+.moving-background-container {
+  position: sticky;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg);
+}
+
+.logo-hero {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: auto;
+  opacity: var(--logo-hero-opacity);
+  mix-blend-mode: var(--logo-hero-blend);
+  filter: var(--logo-hero-filter);
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* ==========================================================================
+   4. NAVIGATION
+   ========================================================================== */
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Logo on the left, links on the right */
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  gap: 20px;
+}
+
+/* Logo block (class name kept as-is to match the markup) */
+.logo-contanier {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  gap: 20px;
+}
+
+.logo-contanier p {
+  padding-top: 4px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-muted);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.logo-img {
+  display: block;
+  height: 63px;
+  width: auto;
+color: var(--pg-text);   /* black in light mode, white in dark mode */
+
+
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Wrapper for About / Projects / Contact (.menu was an exact duplicate) */
+.menu,
+.nav-links-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: var(--text-body);
+}
+
+.nav-links a {
+  margin: 0;                  /* spacing comes from gap */
+  font-family: var(--font-serif);
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  color: var(--text-strong);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: var(--surface-button);
+  color: #121413;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.theme-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--pg-muted);
+}
+
+/* real checkbox stays in the DOM for accessibility, but is visually hidden */
+.theme-toggle__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.theme-toggle__track {
+  position: relative;
+  flex-shrink: 0;
+  width: 56px;
+  height: 30px;
+  border: 1px solid var(--pg-text);
+  border-radius: 18px;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover .theme-toggle__track {
+  background: var(--pg-border);
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pg-text);
+  color: var(--pg-bg);
+  transition: transform 0.25s ease;
+}
+
+.theme-toggle__icon {
+  grid-area: 1 / 1;
+  transition: opacity 0.2s ease;
+}
+
+/* light mode: show sun */
+.theme-toggle__icon--moon { opacity: 0; }
+.theme-toggle__icon--sun  { opacity: 1; }
+
+/* dark mode (checked): slide thumb, show moon */
+.theme-toggle__input:checked + .theme-toggle__track .theme-toggle__thumb {
+  transform: translateX(26px);
+}
+.theme-toggle__input:checked + .theme-toggle__track .theme-toggle__icon--moon { opacity: 1; }
+.theme-toggle__input:checked + .theme-toggle__track .theme-toggle__icon--sun  { opacity: 0; }
+
+/* keyboard focus, same outline as your buttons */
+.theme-toggle__input:focus-visible + .theme-toggle__track {
+  outline: 3px solid var(--pg-text);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__track,
+  .theme-toggle__thumb,
+  .theme-toggle__icon {
+    transition: none;
+  }
+}
+
+
+
+
+/* ==========================================================================
+   5. HERO TEXT
+   ========================================================================== */
+
+.hero-text-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 40px 60px;
+  font-size: 40px;
+  line-height: 1.5;
+  color: var(--text-strong);
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.hero-text-title h1 {
+  padding-bottom: 40px;
+  color: var(--text-strong);
+}
+
+.hero-text-title p {
+  padding-bottom: 20px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.hero-text {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   6. BUTTONS
+   ========================================================================== */
+
+.explore-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.explore-button p {
+  font-family: var(--font-serif);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Primary call-to-action (class name kept as-is to match the markup) */
+.bottone1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 12px;
+  background: var(--surface-button);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+  color: #000;
+}
+
+.bottone1 p {
+  margin-right: 6px;
+  color:#000;
+}
+
+.bottone1 svg {
+  width: 24px;
+  height: auto;
+  color:#000;
+}
+
+.bottone1:hover {
+  box-shadow: var(--glow-hover);
+}
+
+.bottone1:active {
+  transform: scale(0.97);
+  box-shadow: var(--glow-active);
+}
+
+
+/* ==========================================================================
+   7. ACCESSIBILITY
+   ========================================================================== */
+
+.nav-links a:focus-visible,
+.nav-links button:focus-visible,
+.bottone1:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-img:hover {
+    transform: none;
+  }
+
+  .bottone1 {
+    transition: none;
+  }
+}
+
+
+/* ==========================================================================
+   8. RESPONSIVE: TABLETS (max-width: 1024px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .main-hero {
+    padding: 30px;
+  }
+
+  .logo-hero {
+    width: 480px;
+  }
+
+  .hero-text-title {
+    padding: 32px 32px 48px;
+  }
+
+  .hero-text-title h1 {
+    font-size: 60px;            /* desktop renders the h1 at 80px (2em of 40px) */
+    padding-bottom: 32px;
+  }
+
+  /* Hero CTA only (the navbar's .explore-button is nested deeper) */
+  .moving-background-container > div > .explore-button {
+    padding: 0 32px !important; /* overrides the inline padding in the TSX */
+  }
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVE: PHONES (max-width: 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Layout */
+  .main-hero {
+    padding: 20px;
+  }
+
+  .moving-background-container {
+    min-height: 100vh;
+    min-height: 100svh;         /* avoids the mobile browser toolbar cutting the hero */
+  }
+
+  .logo-hero {
+    width: min(340px, 88vw);    /* never wider than the screen */
+    left: 50%;
+    top: 76%;                   /* sits in the empty space below the CTA */
+  }
+
+  /* Navigation: logo row on top, links row underneath */
+  .nav-bar {
+    padding: 12px 16px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .logo-contanier {
+    gap: 12px;
+  }
+
+  .logo-contanier p {
+    font-size: 14px;
+  }
+
+  .logo-img {
+    height: 44px;
+  }
+
+  .nav-links-container {
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .nav-links a {
+    font-size: 15px;
+  }
+
+  .nav-links button {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  /* Hero text */
+  .hero-text-title {
+    padding: 24px 20px 36px;
+  }
+
+  .hero-text-title h1 {
+    font-size: 40px;
+    line-height: 1.25;
+    padding-bottom: 24px;
+  }
+
+  .hero-text-title p {
+    font-size: 18px;
+    padding-bottom: 16px;
+  }
+
+  .hero-text {
+    font-size: 18px;
+  }
+
+  /* Hero CTA */
+  .moving-background-container > div > .explore-button {
+    flex-wrap: wrap;            /* "Selected projects" drops under the button if needed */
+    gap: 12px;
+    padding: 0 20px !important;
+  }
+
+  .moving-background-container > div > .explore-button .bottone1 {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+
+  .moving-background-container > div > .explore-button > p {
+    font-size: 14px !important; /* overrides the inline 16px */
+  }
+}
+
+
+/* ==========================================================================
+   10. RESPONSIVE: SMALL PHONES (max-width: 400px)
+   ========================================================================== */
+
+@media (max-width: 400px) {
+  .logo-hero {
+    width: 85vw;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+
+  .logo-contanier p {
+    font-size: 13px;
+  }
+
+  .nav-links-container {
+    gap: 12px;
+  }
+
+  .nav-links button {
+    padding: 8px 10px;
+  }
+
+  .hero-text-title h1 {
+    font-size: 32px;
+  }
+
+  .hero-text-title p,
+  .hero-text {
+    font-size: 16px;
+  }
+
+  .moving-background-container > div > .explore-button .bottone1 {
+    padding: 12px 22px;
+    font-size: 15px;
+  }
+}
+
+
+/* ==========================================================================
+   11. LEGACY / LIKELY UNUSED
+   Kept so nothing breaks. Search your TSX for these class names and delete
+   whatever isn't referenced.
+   ========================================================================== */
+
+/* Leftovers from the Vite starter template */
 .hero {
   position: relative;
 
@@ -50,431 +665,27 @@
   }
 }
 
-
-
-
-/*//////////////////////////*/
-
-.main-hero {
-  width: 100vw;
-  height: 100vh;
-  padding-top: 50px;
-  padding-right: 50px;
-  padding-left: 50px;
-  padding-bottom: 50px;
-}
-
-
-
-/* 1. Set up the container and the background pattern */
-.moving-background-container {
-  position: sticky;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: #fafafa ;
-  overflow: hidden;
-  align-items: center;
-}
-
-
-.logo-hero{
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  width: 650px;
-  height: auto;
-  opacity: 0.10;
-  
-  mix-blend-mode: multiply;
-
-  pointer-events: none;
-  user-select: none;
-}
-
-.nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Logo on the left, links on the right */
-.nav-links {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0;
-  gap: 20px;
-}
-.logo-contanier{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  gap: 20px;
-}
-.logo-contanier p{
-  font-size: 16px;
-padding-top: 4px;
-font-weight: bold;
-color:rgb(96, 96, 96);
-  font-family: "Lora", serif;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-.logo-img {
-  border-right: #333;
-  height: 60px;
-  width: auto;
-  display: block;
-}
-.logo-img:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-
-.menu{  
-  display: flex;
-  align-items: center;
-  gap: 32px;          /* space between About / Projects / Contact */
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  color: #333;}
-/* The <p> that wraps the links becomes a flex row */
-.nav-links-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 32px;          /* space between About / Projects / Contact */
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  color: #333;
-}
-
-
-
-/* Links (replaces a:-webkit-any-link) */
-.nav-links a {
-  color: black;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 0.6px;
-  font-family: "Lora", serif;
-  margin: 0;          /* spacing now comes from gap */
-}
-
-.nav-links a:hover {
-  color: darkseagreen;
-}
-
-.nav-links button {
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-/*responsive design for the nav bar*/
-/* Tablets and phones */
-@media (max-width: 768px) {
-  .nav-bar {
-    padding: 12px 16px;
-  }
-
-  /* Logo row on top, links row underneath */
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .logo-contanier {
-    gap: 12px;
-  }
-
-  .logo-img {
-    height: 44px;
-  }
-
-  .logo-contanier p {
-    font-size: 14px;
-  }
-
-  .nav-links-container {
-    width: 100%;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .nav-links a {
-    font-size: 15px;
-  }
-
-  .nav-links button {
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-}
-
-/* Small phones */
-@media (max-width: 400px) {
-  .logo-img {
-    height: 38px;
-  }
-
-  .logo-contanier p {
-    font-size: 13px;
-  }
-
-  .nav-links-container {
-    gap: 12px;
-  }
-
-  .nav-links button {
-    padding: 8px 10px;
-  }
-}
-
-.hero-text-title {
-  display: flex;
-  flex-direction: column;
-  font-size: 40px;
-  color: rgb(0, 0, 0);
-  line-height: 1.5;
-  justify-content: center;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 40px;
-  padding-bottom: 60px;
-   text-align: justify;
-  text-justify: inter-word;
-
-}
-.hero-text-title h1{
-  padding-bottom: 40px;
-}
-.hero-text-title p{
-  padding-bottom: 20px;
-  font-family:"Lora", serif;
-  font-size: 22px;
-  color: rgb(96, 96, 96);
-  line-height: 1.5;
-
-}
-
-.hero-text {
-  font-family:"Lora", serif;
-  font-size: 24px;
-  color: rgb(96, 96, 96);
-  line-height: 1.5;
-}
-
-
-.logo{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
- .explore-button{
-  display: flex;
-  flex-direction: row;
-  align-items: center ;
-  gap: 10px;
- }
-
- .explore-button p{
-  font-family:"Lora", serif;
-  color: rgb(96, 96, 96);
-  line-height: 1.5;
- }
-
-.bottone1 {
- padding-left: 40px;
- padding-right: 40px;
- padding-bottom: 16px;
- padding-top: 16px;
- border-radius: 12px;
- background:#E6E0D6;
- border: none;
- font-family: "Lora", serif;
- text-align: center;
- cursor: pointer;
- transition: 0.4s;
- display: flex;
- flex-direction: row;
- align-items: center;
- font-size: 18px;
-}
-
-.bottone1 p{
-color: rgb(0, 0, 0);
-margin-right: 6px;
-}
-
-.bottone1 svg{
-width: 24px;
-height: auto;
-color: rgb(96, 96, 96);
-}
-.bottone1:hover {
- box-shadow: 7px 5px 56px -14px #C6D5DA;
-}
-
-.bottone1:active {
- transform: scale(0.97);
- box-shadow: 7px 5px 56px -10px darkseagreen;
-}
-
-.scroll-text{
+/* Scroll hint (the `float` animation isn't attached to anything) */
+.scroll-text {
   font-size: 20px;
-  color: white;
   font-weight: 150;
-}        
-
-.scroll-button{
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color:#C6D5DA;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            
-        }
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-
-
-/* responsive design * /
-
-/* ---------- Hero: tablets ---------- */
-@media (max-width: 1024px) {
-  .logo-hero {
-    width: 480px;
-  }
-
-  .hero-text-title {
-    padding: 32px 32px 48px;
-  }
-
-  .hero-text-title h1 {
-    font-size: 60px;      /* desktop renders the h1 at 80px (2em of 40px) */
-    padding-bottom: 32px;
-  }
-
-  .main-hero {
-    padding: 30px;
-  }
-
-  /* Hero CTA only (the navbar's .explore-button is nested deeper, so it's untouched) */
-  .moving-background-container > div > .explore-button {
-    padding: 0 32px !important;   /* overrides the inline padding in the TSX */
-  }
+  color: var(--text-on-accent);
 }
 
-/* ---------- Hero: phones ---------- */
-@media (max-width: 768px) {
-  .moving-background-container {
-    min-height: 100vh;
-    min-height: 100svh;   /* avoids the mobile browser toolbar cutting the hero */
-  }
-
-  
-  .logo-hero {
-  width: min(340px, 88vw);   /* never wider than the screen */
-  left: 50%;                 /* centered horizontally */
-  top: 76%;                  /* sits in the empty space below the CTA */
+.scroll-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--accent-soft);
+  color: var(--text-on-accent);
+  cursor: pointer;
 }
 
-  .hero-text-title {
-    padding: 24px 20px 36px;
-  }
-
-  .hero-text-title h1 {
-    font-size: 40px;
-    line-height: 1.25;
-    padding-bottom: 24px;
-  }
-
-  .hero-text-title p {
-    font-size: 18px;
-    padding-bottom: 16px;
-  }
-
-  .hero-text {
-    font-size: 18px;
-  }
-
-  .main-hero {
-    padding: 20px;
-  }
-
-  .moving-background-container > div > .explore-button {
-    padding: 0 20px !important;
-    flex-wrap: wrap;      /* "Selected projects" drops under the button if needed */
-    gap: 12px;
-  }
-
-  .moving-background-container > div > .explore-button .bottone1 {
-    padding: 14px 28px;
-    font-size: 16px;
-  }
-
-  .moving-background-container > div > .explore-button > p {
-    font-size: 14px !important;   /* overrides the inline 16px */
-  }
-}
-
-/* ---------- Hero: small phones ---------- */
-@media (max-width: 400px) {
-  .logo-hero {
-  width: 85vw;
-}
-
-  .hero-text-title h1 {
-    font-size: 32px;
-  }
-
-  .hero-text-title p,
-  .hero-text {
-    font-size: 16px;
-  }
-
-  .moving-background-container > div > .explore-button .bottone1 {
-    padding: 12px 22px;
-    font-size: 15px;
-  }
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }

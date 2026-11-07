@@ -5,15 +5,33 @@
   --pg-border: #dfe3e8;
   --pg-radius: 20px;
   --pg-gap: 8px;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --pg-bg: #121316;
     --pg-text: #f1f2f4;
     --pg-muted: #8f959e;
     --pg-border: #2a2d33;
+    color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --pg-bg: #121316;
+  --pg-text: #f1f2f4;
+  --pg-muted: #8f959e;
+  --pg-border: #2a2d33;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --pg-bg: #fcfcfc;
+  --pg-text: #15171a;
+  --pg-muted: #7a7f87;
+  --pg-border: #dfe3e8;
+  color-scheme: light;
 }
 
 .project-gallery {
@@ -57,7 +75,6 @@
   position: relative;
   display: block;
   overflow: hidden;
-  border: 1px solid var(--pg-border);
   border-radius: var(--pg-radius);
   background-color: var(--pg-border);
   color: inherit;
@@ -151,7 +168,7 @@
   border-radius: 18px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--pg-text);
+  color: var(--pg-muted);
   text-decoration: none;
   white-space: nowrap;
   transition: background-color 0.2s ease, color 0.2s ease;

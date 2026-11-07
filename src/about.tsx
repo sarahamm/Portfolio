@@ -105,7 +105,7 @@ function About() {
       <div className="explore-button">
         <button className="bottone1" style={{ display: "flex", alignItems: "center", justifyContent: "spaceBetween" }} onClick={() => window.open(sarahReseme, "_blank")}>
           <PiReadCvLogoLight style={{color: "#161616", marginRight:"12px"}} />
-          Resume
+          Resume 
         
         </button>
         </div>
