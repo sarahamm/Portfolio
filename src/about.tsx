@@ -1,9 +1,11 @@
-import NavBar from "./navbar";
+import NavBar, { Logo } from "./navbar";
 import "./about.css"
-import myLogo from "./assets/myLogo.svg";
+
 import sarahReseme from "./assets/Sarah_Ammaireh_2026.pdf"
 import "./App.css"
+import "./Contact.css";
 import { PiReadCvLogoLight } from "react-icons/pi";
+import { IoLogoGithub, IoLogoFigma, IoLogoLinkedin } from "react-icons/io5";
 
 const education = [
   ["Albalqaa Applied University-Computer Science", "2022 - 2026"],
@@ -110,11 +112,7 @@ function About() {
         </button>
         </div>
       </div>
-      <img
-        className="about__photo"
-        src={myLogo}
-        alt="Maggie shaping a wooden piece on a lathe, wearing safety glasses and overalls"
-      />
+      <Logo/>
     </section>
   );
 }
@@ -125,6 +123,36 @@ function About() {
     <NavBar />
     <main className="resume">
        <About/>
+      <div id="next-steps" style={{alignItems: "flex-start"}}>
+       <ul>
+                <li>
+                  <a href="https://github.com/sarahamm" target="_blank">
+                  
+                    <IoLogoGithub className="button-icon"/>
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.figma.com/@775e269f_ed94_4" target="_blank">
+                    
+                      <IoLogoFigma className="button-icon"/>
+                    
+                    Figma
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/sarah-ammaireh-a315512ba/"
+                    target="_blank"
+                  >
+                      <IoLogoLinkedin className="button-icon"/>
+      
+                    
+                    Linkedin
+                  </a>
+                </li>
+        </ul>
+      </div>
       <div className="resume__grid">
         <div className="resume__col resume__col--intro">
         <Column title="Education" groups={education} />
@@ -137,6 +165,7 @@ function About() {
         <Column title="Skills" groups={skills} />
         <Column title="Awards" groups={awards} />
       </div>
+              
     </main>
     </>
    );

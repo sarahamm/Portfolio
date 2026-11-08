@@ -115,24 +115,16 @@ export default function Contact() {
         <ul>
           <li>
             <a href="https://github.com/sarahamm" target="_blank">
-            <svg
-                className="button-icon"
-                role="presentation"
-                aria-hidden="true"
-              > 
-              <IoLogoGithub /></svg>
+            
+              <IoLogoGithub className="button-icon"/>
               GitHub
             </a>
           </li>
           <li>
             <a href="https://www.figma.com/@775e269f_ed94_4" target="_blank">
-              <svg
-                className="button-icon"
-                role="presentation"
-                aria-hidden="true"
-              >
-                <IoLogoFigma />
-              </svg>
+              
+                <IoLogoFigma className="button-icon"/>
+              
               Figma
             </a>
           </li>
@@ -141,14 +133,9 @@ export default function Contact() {
               href="https://www.linkedin.com/in/sarah-ammaireh-a315512ba/"
               target="_blank"
             >
-              <svg
-                className="button-icon"
-                role="presentation"
-                aria-hidden="true"
-              >
-                <IoLogoLinkedin />
+                <IoLogoLinkedin className="button-icon"/>
 
-              </svg>
+              
               Linkedin
             </a>
           </li>

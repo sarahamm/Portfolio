@@ -1,20 +1,59 @@
+/* ------------------------------------------------------------------
+   Theme tokens used by this file.
+   Everything else comes from your global :root tokens
+   (--bg, --text-strong, --text-body, --text-muted, --glow-hover ...).
+   Only the wave colours need per-theme values, so only they are
+   repeated for each theme selector. No green anywhere.
+------------------------------------------------------------------- */
+:root {
+  /* wave palette: slate-blue, soft blue, sand */
+  --wave-a: #c6d5da;
+  --wave-b: #b9c8e0;
+  --wave-c: #d9d2c5;
+
+  /* derived from your tokens, so they flip with the theme automatically */
+  --line: color-mix(in srgb, var(--text-strong) 14%, transparent);
+  --field-bg: color-mix(in srgb, var(--text-strong) 5%, var(--bg));
+  --field-border: color-mix(in srgb, var(--text-strong) 25%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --wave-a: #3d4a4f;
+    --wave-b: #2d3f55;
+    --wave-c: #4a443c;
+  }
+}
+
+:root[data-theme="dark"] {
+  --wave-a: #3d4a4f;
+  --wave-b: #2d3f55;
+  --wave-c: #4a443c;
+}
+
+/* ------------------------------------------------------------------
+   Next steps
+------------------------------------------------------------------- */
 #next-steps {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: left;
-   & > div {
+
+  & > div {
     flex: 1 1 0;
     padding: 32px;
+
     @media (max-width: 1024px) {
       padding: 24px 20px;
     }
   }
-    .icon {
+
+  .icon {
     margin-bottom: 16px;
     width: 22px;
     height: 22px;
@@ -26,47 +65,47 @@
   }
 }
 
+/* moved out of the ul block: it was nested inside it and never matched */
+#docs {
+  border-right: 1px solid var(--line);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
 #next-steps ul {
   list-style: none;
   padding: 0;
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   gap: 8px;
-  margin: 32px 0 0;
-
- 
+  margin-bottom: 32px ;
 
   a {
-    color: var(--text-h);
-    font-size: 16px;
+    color: var(--text-strong);
+    font-size: 18px;
     border-radius: 6px;
     display: flex;
     align-items: center;
     padding: 6px 12px;
-    align-items: center;
     gap: 8px;
     text-decoration: none;
     transition: box-shadow 0.3s;
-    
+
     &:hover {
-      box-shadow: var(--shadow);
+      box-shadow: var(--glow-hover);
     }
+
     .button-icon {
       height: 24px;
-      width:24px;
-      color :rgb(99, 130, 99);
+      width: 24px;
+      color: var(--text-muted);
     }
+    
+    
   }
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-
 
   @media (max-width: 1024px) {
     margin-top: 20px;
@@ -75,6 +114,7 @@
 
     li {
       flex: 1 1 calc(50% - 8px);
+      
     }
 
     a {
@@ -85,23 +125,29 @@
   }
 }
 
+/* ------------------------------------------------------------------
+   Contact
+------------------------------------------------------------------- */
 .contact-section {
-position: relative; /* Enables z-index functionality */
+  position: relative; /* enables z-index */
   z-index: 10;
   padding: 16px;
   align-items: center;
-  min-height: 65vh;
-  margin: 20px ;
-  max-width: 100vw;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   align-content: center;
+  min-height: 65vh;
+  margin: 20px;
+  max-width: 100vw;
+  background-color: var(--bg);
+  color: var(--text-body);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px color-mix(in srgb, var(--text-strong) 10%, transparent);
+  overflow: hidden; /* keeps the waves inside the rounded corners */
 }
 
 .contact-container {
   position: relative;
-  z-index: 10; /* Ensures form and links render on top of waves */
+  z-index: 10; /* form and links render on top of the waves */
   padding-top: 40px;
   display: flex;
   flex-direction: column;
@@ -109,12 +155,13 @@ position: relative; /* Enables z-index functionality */
 }
 
 .contact-section h2 {
-  font-size: 24px;
   margin-bottom: 16px;
   text-align: center;
-  font-family: "Cormorant Garamond";
+  font-family: "Cormorant Garamond", serif;
   font-size: 32px;
+  color: var(--text-strong);
 }
+
 .email-input {
   display: flex;
   flex-direction: column;
@@ -125,9 +172,13 @@ position: relative; /* Enables z-index functionality */
   margin-bottom: 16px;
   width: 35vw;
 }
-.email-input ::placeholder{
-  font-family: "Cormorant Garamond";
-  font-size: 16px;
+
+.email-input ::placeholder,
+.contact-section textarea::placeholder {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: var(--text-muted);
+  opacity: 1;
 }
 
 .email-label {
@@ -137,31 +188,33 @@ position: relative; /* Enables z-index functionality */
   align-items: center;
   gap: 6px;
   margin-bottom: 16px;
-  font-family: "Cormorant Garamond";
+  font-family: "Cormorant Garamond", serif;
   font-size: 24px;
+  color: var(--text-strong);
 }
+
 .email-input h5 {
   margin: 0;
   font-weight: bold;
   font-size: 22px;
-  color: var(--text-h);
-  font-family: "Cormorant Garamond";
+  color: var(--text-strong);
+  font-family: "Cormorant Garamond", serif;
 }
 
 .email-input input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--field-border);
   border-radius: 4px;
-  background-color: whitesmoke;
-  font: 600 16px "Cormorant Garamond";
-  color: rgb(83, 82, 82);
+  background-color: var(--field-bg);
+  font: 600 16px "Cormorant Garamond", serif;
+  color: var(--text-body);
 }
 
 .message-label {
-width: 35vw;
-align-items: start;
-align-content:start;
+  width: 35vw;
+  align-items: start;
+  align-content: start;
 }
 
 .text-area-div {
@@ -174,57 +227,63 @@ align-content:start;
   margin-bottom: 16px;
   width: 100%;
 }
-.text-area-div h5{
-  font-family: "Cormorant Garamond";
+
+.text-area-div h5 {
+  font-family: "Cormorant Garamond", serif;
   font-size: 24px;
   align-items: flex-start;
   align-content: center;
   justify-content: center;
   margin-bottom: 8px;
-  color: var(--text-h);
-}
-
-.text-area-div textarea{
-  font-family: "";
-  font-size :16px;
-
+  color: var(--text-strong);
 }
 
 .contact-section textarea {
   width: 35vw;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--field-border);
   border-radius: 4px;
-  font-size: 14px;
-  background-color: whitesmoke;
-  font: lightgray;
-  font-size: 12px;
-  font-family: "Cormorant Garamond";
+  background-color: var(--field-bg);
+  color: var(--text-body);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
 }
 
+.email-input input:focus-visible,
+.contact-section textarea:focus-visible {
+  outline: 2px solid var(--text-strong);
+  outline-offset: 2px;
+}
+
+/* Button: inverted from the page, so it works in both themes */
 .contact-section button {
   padding: 10px 20px;
-  background-color: darkseagreen;
-  color: #fff;
+  background-color: var(--text-strong);
+  color: var(--bg);
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   width: 35vw;
+  transition: background-color 0.2s;
 }
+
 .contact-section button:hover {
-  background-color: rgb(99, 130, 99);
+  background-color: var(--text-body);
 }
+
+.contact-section button:focus-visible {
+  outline: 2px solid var(--text-strong);
+  outline-offset: 3px;
+}
+
 .submit-btn-div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .contact-section {
     padding: 12px;
@@ -232,130 +291,147 @@ align-content:start;
   }
 
   .email-input,
+  .message-label,
   .contact-section textarea,
   .contact-section button {
     width: 100%;
   }
 }
 
-
-
-/* Additional Styling waves */
-@property --color{
+/* ------------------------------------------------------------------
+   Waves
+------------------------------------------------------------------- */
+@property --color {
   syntax: "<color>";
   inherits: true;
-  initial-value: darkseagreen;
+  initial-value: #c6d5da;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	--color: darkseagreen5;
-	background: #f9f9f9;
-	animation: color-change 20s ease-in-out infinite;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text-body);
+  --color: var(--wave-a);
+  animation: color-change 20s ease-in-out infinite;
 }
 
 .test {
-	position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-	background: hsl(from var(--color) h s calc(l - 5));
-	clip-path: shape(
-		from 0% 100%,
-		line to 0% 40%,
-		arc by 50% 10% of 50% cw,
-		arc by 50% 10% of 50%,
-		line to 100% 100%,
-		close
-  	);
-	animation: wave 10s ease-in-out infinite;
-	
-&::before, &::after {
-    content: '';
+  pointer-events: none;
+  background: hsl(from var(--color) h s calc(l - 5));
+  clip-path: shape(
+    from 0% 100%,
+    line to 0% 40%,
+    arc by 50% 10% of 50% cw,
+    arc by 50% 10% of 50%,
+    line to 100% 100%,
+    close
+  );
+  animation: wave 10s ease-in-out infinite;
+
+  &::before,
+  &::after {
+    content: "";
     position: absolute;
-    top: 0;  
-    left: 0;  
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
   }
-	
-	&::before {
-		z-index: -2;
-		background: var(--color);
-		clip-path: shape(
-			from 0% 100%,
-			line to 0% 50%,
-			arc by 50% 10% of 80% cw,
-			arc by 50% 10% of 80%,
-			line to 100% 100%,
-			close
-		);
-		animation: wave-2 10s ease-in-out infinite;
-	}
-	
-	&::after {
-		z-index: -1;
-		background: hsl(from var(--color) h s calc(l + 5));
-		clip-path: shape(
-			from 0% 100%,
-			line to 0% 60%,
-			arc by 70% 15% of 100% cw,
-			arc by 30% 15% of 100%,
-			line to 100% 100%,
-			close
-		);
-		animation: wave-3 10s ease-in-out infinite;
-	}
+
+  &::before {
+    z-index: -2;
+    background: var(--color);
+    clip-path: shape(
+      from 0% 100%,
+      line to 0% 50%,
+      arc by 50% 10% of 80% cw,
+      arc by 50% 10% of 80%,
+      line to 100% 100%,
+      close
+    );
+    animation: wave-2 10s ease-in-out infinite;
+  }
+
+  &::after {
+    z-index: -1;
+    background: hsl(from var(--color) h s calc(l + 5));
+    clip-path: shape(
+      from 0% 100%,
+      line to 0% 60%,
+      arc by 70% 15% of 100% cw,
+      arc by 30% 15% of 100%,
+      line to 100% 100%,
+      close
+    );
+    animation: wave-3 10s ease-in-out infinite;
+  }
 }
 
+/* cycles through the three theme-aware wave colours */
 @keyframes color-change {
-	33% {
-		--color: #124C74;
-	}
-	
-	66% {
-		--color: #52591F;
-	}
+  0%,
+  100% {
+    --color: var(--wave-a);
+  }
+  33% {
+    --color: var(--wave-b);
+  }
+  66% {
+    --color: var(--wave-c);
+  }
 }
 
 @keyframes wave {
-	50% {
-		clip-path: shape(
-			from 0% 100%,
-			line to 0% 42%,
-			arc by 50% 10% of 45% cw,
-			arc by 50% 10% of 45%,
-			line to 100% 100%,
-			close
-		);
-	}
+  50% {
+    clip-path: shape(
+      from 0% 100%,
+      line to 0% 42%,
+      arc by 50% 10% of 45% cw,
+      arc by 50% 10% of 45%,
+      line to 100% 100%,
+      close
+    );
+  }
 }
 
 @keyframes wave-2 {
-	50% {
-		clip-path: shape(
-			from 0% 100%,
-			line to 0% 48%,
-			arc by 50% 10% of 70% cw,
-			arc by 50% 10% of 70%,
-			line to 100% 100%,
-			close
-		);
-	}
+  50% {
+    clip-path: shape(
+      from 0% 100%,
+      line to 0% 48%,
+      arc by 50% 10% of 70% cw,
+      arc by 50% 10% of 70%,
+      line to 100% 100%,
+      close
+    );
+  }
 }
 
 @keyframes wave-3 {
-	50% {
-		clip-path: shape(
-			from 0% 100%,
-			line to 0% 61%,
-			arc by 50% 15% of 92% cw,
-			arc by 50% 15% of 92%,
-			line to 100% 100%,
-			close
-		);
-	}
+  50% {
+    clip-path: shape(
+      from 0% 100%,
+      line to 0% 61%,
+      arc by 50% 15% of 92% cw,
+      arc by 50% 15% of 92%,
+      line to 100% 100%,
+      close
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .test,
+  .test::before,
+  .test::after {
+    animation: none;
+  }
 }

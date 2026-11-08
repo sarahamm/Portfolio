@@ -3,9 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import Contact from "./Contact.tsx";
-import NavBar from "./navbar.tsx";
+import NavBar, { Logo } from "./navbar.tsx";
 import "./fonts.css";
-import myLogo from "./assets/myLogo.svg";
 import Gallery from "./Gallery.tsx";
 import { FiArrowDownRight } from "react-icons/fi";
 import { BrowserRouter} from "react-router-dom";
@@ -19,12 +18,19 @@ createRoot(document.getElementById("root")!).render(
 );
 
 export default function main() {
+
+  const scrollToGallery = () => {
+  document.getElementById("gallery")?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
   return (
     <>
       <section id="center">
         <div className="moving-background-container">
           <div className="pattern-layer">
-            <img src={myLogo} alt="Logo" className="logo-hero" />
+            <Logo className="logo-svg"/>
           </div>
           <div
             style={{
@@ -55,7 +61,7 @@ export default function main() {
             </div>
 
             <div className="explore-button" style={{padding:"0 40px"}}>
-              <button className="bottone1">
+              <button className="bottone1" onClick={scrollToGallery}>
                 <p className="btn-txt">Explore My Work</p>
                 <FiArrowDownRight />
               </button>
@@ -66,7 +72,9 @@ export default function main() {
       </section>
 
 
-      <Gallery />
+      <section id="gallery">
+  <Gallery />
+</section>
       <Contact />
     </>
   );

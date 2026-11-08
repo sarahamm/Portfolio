@@ -7,6 +7,7 @@
   /* Surfaces */
   --bg: #fafafa;
   --surface-button: #e6e0d6;
+  --project-logo-box: #f2f2ef;
 
   /* Text */
   --text-strong: #000;
@@ -34,6 +35,7 @@
   :root:not([data-theme="light"]) {
     --bg: #121413;
     --surface-button: #e6e0d6;
+    --project-logo-box: #f2f2ef;
 
     --text-strong: #f2f2ef;
     --text-body: #d6d8d5;
@@ -59,6 +61,7 @@
 
   --bg: #121413;
   --surface-button: #e6e0d6;
+  --project-logo-box: #f2f2ef;
 
   --text-strong: #f2f2ef;
   --text-body: #d6d8d5;
@@ -109,6 +112,48 @@ body {
   min-height: 100vh;
   overflow: hidden;
   background-color: var(--bg);
+}
+.pattern-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8%;
+  pointer-events: none;
+}
+.logo-svg {
+  width: min(38vw, 600px);
+  height: auto;
+}
+@media (max-width: 768px) {
+  .moving-background-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* hero content first */
+  .moving-background-container > div:not(.pattern-layer) {
+    order: 1;
+  }
+
+  /* logo drops below the hero + explore button */
+  .pattern-layer {
+    order: 2;
+    position: static;        /* remove the absolute overlay */
+    inset: auto;
+    width: 100%;
+    padding: 40px 0 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pattern-layer svg,
+  .logo-svg {
+    width: min(70vw, 320px);
+    height: auto;
+  }
 }
 
 .logo-hero {
@@ -475,7 +520,7 @@ color: var(--pg-text);   /* black in light mode, white in dark mode */
 @media (max-width: 768px) {
   /* Layout */
   .main-hero {
-    padding: 20px;
+    padding: 24px;
   }
 
   .moving-background-container {
@@ -529,11 +574,12 @@ color: var(--pg-text);   /* black in light mode, white in dark mode */
 
   /* Hero text */
   .hero-text-title {
-    padding: 24px 20px 36px;
+    padding: 24px 24px 36px;
+    
   }
 
   .hero-text-title h1 {
-    font-size: 40px;
+    font-size: 34px;
     line-height: 1.25;
     padding-bottom: 24px;
   }
@@ -591,7 +637,7 @@ color: var(--pg-text);   /* black in light mode, white in dark mode */
   }
 
   .hero-text-title h1 {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .hero-text-title p,
