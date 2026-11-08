@@ -128,6 +128,7 @@
 
 /* Carousel: clipped to its container, scrolls horizontally inside it */
 .image-crousel-view {
+  position: relative;
   width: 90%;
   max-width: 100%;
   overflow: hidden;
@@ -135,18 +136,49 @@
 }
 
 .image-crousel-track {
+  position: relative; /* makes slide.offsetLeft relative to the track */
   display: flex;
   gap: 16px;
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x proximity;
   padding-bottom: 12px;
+  outline: none;
+
+  /* the snap behavior */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+
+  /* hide the scrollbar */
+  scrollbar-width: none;
+}
+.image-crousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.image-crousel-track:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 16px;
+}
+
+/* while dragging with the mouse: no snapping, no smoothing */
+.image-crousel-track.is-dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  cursor: grabbing;
+  user-select: none;
+}
+@media (hover: hover) {
+  .image-crousel-track { cursor: grab; }
 }
 
 .image-crousel {
   flex: 0 0 auto;
   scroll-snap-align: start;
+  scroll-snap-stop: always; /* a fast swipe can't skip past slides */
 }
 
 .image-crousel-once {
@@ -155,6 +187,62 @@
   width: auto;
   max-width: none;
   border-radius: 16px;
+  user-select: none;
+}
+
+/* Prev / next buttons */
+.image-crousel-btn {
+  position: absolute;
+  top: calc(50% + 12px);
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: opacity 0.2s, background 0.2s;
+}
+.image-crousel-btn:hover:not(:disabled) { background: rgba(0, 0, 0, 0.8); }
+.image-crousel-btn:disabled { opacity: 0; pointer-events: none; }
+.image-crousel-btn--prev { left: 12px; }
+.image-crousel-btn--next { right: 12px; }
+
+/* Dots */
+.image-crousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 4px;
+}
+.image-crousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.25;
+  cursor: pointer;
+  transition: width 0.25s, opacity 0.25s;
+}
+.image-crousel-dot.is-active {
+  width: 24px;
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .image-crousel-once { height: 320px; }
+  .image-crousel-btn { display: none; } /* swipe on touch devices */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-crousel-track { scroll-behavior: auto; }
 }
 
 .project__title {
