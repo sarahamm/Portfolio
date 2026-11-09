@@ -33,7 +33,7 @@ import coffee3 from "./assets/coffee/coffee3.png";
 import coffee4 from "./assets/coffee/coffee4.png";
 import coffee5 from "./assets/coffee/coffee5.png";
 import coffee6 from "./assets/coffee/coffee6.png";
-import coffeeposter from "./assets/coffeeposter1.png"
+import coffeeposter from "./assets/coffeeposter.png"
 
 import wasabi1 from "./assets/wasabi/wasabi1.png";
 import wasabi2 from "./assets/wasabi/wasabi2.png";
@@ -79,7 +79,7 @@ export const ProjectData = [
       "JIP is a web platform that fixes this communication gap by showing exactly where their pipes and cables cross before anyone starts digging.",
     why:"To prevent accidental damage to underground utilities and bridge the communication gap between civil engineering teams before excavation begins",
     what:"A centralized web platform that acts as an accurate mapping tool for underground infrastructure networks.",
-   how:"By visually displaying the exact crossing points of pipes and cables on a digital map, ensuring teams have the necessary spatial data before they start digging.",
+   how:"By ingesting and dynamically rendering multi-layer GIS datasets into a centralized platform, enabling real-time spatial queries and subsurface clash detection prior to excavation.",
       skills: [
   {
     title: "Tools & Frameworks",
@@ -248,7 +248,7 @@ Aims to establish a "Circular Economy" for clothing in Jordan, thereby reducing 
       "coffe shop menu website that allows users to view the menu, place orders, and make payments online. The website was built using React and Node.js, with a focus on responsive design and user experience.",
     why:"To provide customers with a convenient, frictionless way to view offerings and purchase coffee without waiting in line.",
     what:"A responsive, user-centric coffee shop website with full e-commerce capabilities.",
-   how:"[change]By utilizing React and Node.js to create a smooth online system where users can easily browse the menu, place orders, and process payments securely.",
+   how:"By designing a clean, mobile-first visual layout where users can easily browse the menu across any device and jump straight to checkout.",
       skills: [
   {
     title: "Tools & Frameworks",

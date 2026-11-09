@@ -2,15 +2,17 @@
   --pg-radius: clamp(14px, 2vw, 20px);
   --pg-gap: clamp(16px, 3vw, 32px);
   --pg-space: clamp(16px, 4vw, 45px);
+  --pg-side: clamp(20px, 8vw, 160px);   /* NEW: white space left & right */
 }
 
 /* ---------- Gallery layout ---------- */
 .project-gallery {
   list-style: none;
-  margin: var(--pg-space);
+  margin: var(--pg-space) auto;                    /* centered */
   padding: 0;
+  width: min(calc(100% - 2 * var(--pg-side)), 1680px);  /* narrower gallery = smaller cards */
   column-count: 2;
-  column-gap: var(--pg-gap);
+  column-gap: clamp(20px, 4vw, 48px);              /* slightly more space between cards */
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--pg-text);
 }
@@ -41,6 +43,7 @@
   position: relative;
   display: block;
   overflow: hidden;
+  width:90%;
   border-radius: var(--pg-radius);
   background-color: var(--pg-border);
   color: inherit;
@@ -51,6 +54,8 @@
   display: block;
   width: 100%;
   height: auto;
+   
+  object-fit: cover; 
   transition: transform 0.45s ease;
 }
 
@@ -86,7 +91,7 @@
   flex-wrap: wrap;
   gap: 12px 16px;
   margin-top: 12px;
-  max-width: 100%;
+  max-width: 90%;
 }
 
 .project-card__text {
