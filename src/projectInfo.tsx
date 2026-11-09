@@ -26,24 +26,7 @@ export default function ProjectInfo() {
   const { id } = useParams<{ id: string }>();
   const project = ProjectData.find((p) => String(p.id) === id);
 
-  //const trackRef = useRef<HTMLDivElement>(null);
 
-  // Horizontal scroll of the carousel with the mouse wheel (desktop only)
-  // useEffect(() => {
-  //   const el = trackRef.current;
-  //   if (!el) return;
-
-  //   const onWheel = (e: WheelEvent) => {
-  //     if (!window.matchMedia("(min-width: 861px)").matches) return;
-  //     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-  //       e.preventDefault();
-  //       el.scrollLeft += e.deltaY;
-  //     }
-  //   };
-
-  //   el.addEventListener("wheel", onWheel, { passive: false });
-  //   return () => el.removeEventListener("wheel", onWheel);
-  // }, [project]);
 
   // Start at the top when opening a project
   useEffect(() => {
@@ -121,10 +104,17 @@ useEffect(() => {
   updateState();
   track.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
+  // Recalculate when slides get their size (images finishing loading)
+  const ro = new ResizeObserver(onScroll);
+  ro.observe(track);
+  Array.from(track.children).forEach((slide) => ro.observe(slide));
+
+
   return () => {
     cancelAnimationFrame(raf);
     track.removeEventListener("scroll", onScroll);
     window.removeEventListener("resize", onScroll);
+    ro.disconnect();
   };
 }, [updateState, carouselImages.length]);
 
