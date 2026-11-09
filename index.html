@@ -2,14 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/myLogo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/myLogo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
+    <title>Sarah Ammaireh | Portfolio</title>
+
+
+    <meta
+      name="description"
+      content="Explore Sarah Ammaireh's projects in Front-End Development, UI/UX Design, and Mobile Application Development."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sarah Ammaireh | Portfolio" />
+    <meta
+      property="og:description"
+      content="Explore my portfolio featuring creative projects in Front-End Development, UI/UX Design, and Mobile Application Development."
+    />
+    <meta
+      property="og:url"
+      content="https://sarahammaireh.pages.dev/"
+    />
+
     <script>
-  const t = localStorage.getItem("theme");
-  if (t) document.documentElement.dataset.theme = t;
-</script>
+      const t = localStorage.getItem("theme");
+      if (t) document.documentElement.dataset.theme = t;
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
