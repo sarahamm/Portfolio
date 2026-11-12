@@ -179,8 +179,7 @@ export const ProjectData = [
       "An educational platform designed to build student values and skills through interactive daily tasks.",
     why:"To build and reinforce positive values and essential skills in students through consistent, engaging methods.",
     what:"An interactive educational platform tailored for continuous student development and daily learning.",
-   how:"By providing students with interactive daily tasks that encourage active participation, habit formation, and practical skill-building.",
-      skills:[
+how: "Developed as a cross-platform mobile app using Flutter and Dart, implementing role-based access, state-driven daily task tracking, and a custom UI.",      skills:[
   {
     title: "Tools & Frameworks",
     skill: [

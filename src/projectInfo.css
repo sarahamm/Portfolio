@@ -305,6 +305,10 @@
   .project__col{
     gap: 8px;
     max-width: max-content;
+    align-items: center;
+  }
+  .image-crousel-view {
+    width: 100%;
   }
 
   .image-crousel-once {
